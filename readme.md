@@ -9,7 +9,7 @@ To use NonnyAlertJs, follow these steps:
 
 - Include the `NonnyAlertJs` library in your project using CDN.
 ```js
-<script src="alertify.js"></script>
+<script src="https://coding-nonny.github.io/alert-notify/dist/alertify.js"></script>
 ```
 - Create an instance of `AlertNotify` by providing the appropriate arguments:
 
@@ -110,4 +110,4 @@ Note:
 
 Remember to replace `time`, `position`, `textColor`, and `backgroundColor` with the desired values when creating the `AlertNotify` instance.
 
-[click here for live example](URL)
+[click here for live example](https://coding-nonny.github.io/alert-notify/test.html)
