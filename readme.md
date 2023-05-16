@@ -110,4 +110,4 @@ Note:
 
 Remember to replace `time`, `position`, `textColor`, and `backgroundColor` with the desired values when creating the `AlertNotify` instance.
 
-[click here for live example](URL)
+[click here for live example]( https://coding-nonny.github.io/alert-notify/test.html)
