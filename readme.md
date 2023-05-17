@@ -76,7 +76,6 @@ import 'nonnyalertjs/style/alert-box.css'; // Import the CSS file
 ```
 3. Create an instance of AlertNotify and use it in your React component:
 ```jsx
-Copy code
 const MyComponent = () => {
 const message = new AlertNotify(time, position, textColor, backgroundColor);
 
