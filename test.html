@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="https://coding-nonny.github.io/alert-notify/dist/alertify.js"></script>
+    <!-- <script src="https://coding-nonny.github.io/alert-notify/dist/alertify.js"></script> -->
+    <script src="./dist/alertify.js"></script>
     <style>
       * {
         margin: 0;
@@ -35,18 +36,18 @@
       <button class="click">test</button>
     </div>
     <script>
-      const message = new AlertNotify(10000, "top-left");
+      const message = new AlertNotify(10000, "center");
       document.querySelector(".click").onclick =  async () => {
         if (
           await message.alert_Confirm(
             "Do You Think This Is Good?"
           )
         ) {
-          message.alert_message("You clicked Yes", "");
+          message.alert_message("This Is Default", "");
         } else {
-          message.alert_message("You clicked No", "warning");
+          message.alert_message("This Is Danger", "danger");
         }
-        message.shouldAutoHide(true);
+        message.shouldAutoHide();
       };
     </script>
   </body>
