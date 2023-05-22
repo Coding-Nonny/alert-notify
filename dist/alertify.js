@@ -62,14 +62,15 @@ var AlertNotify = (function () {
         this.hideOnClick();
       });
     }
+
     alert_message(msg = "", type = "") {
-      const msgBox  = `<p style="margin-top:6px;">${msg}</p>`;
+      const msgBox  = `${msg}`;
       let alertLoader = "";
       switch (type) {
         case "success":
           document.body.appendChild(this.notifyBox);
-          this.notifyBox.style = `position: fixed;background: #4caf50; color: ${this.alertColor};padding: 8px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);${this.placement};font-weight: 700; border: 2px solid #ddd;word-wrap:break-word;cursor:pointer;`;
-          this.notifyBox.innerHTML = `<p style="width:fit-content; height:10px; padding:0 0 6px 0; margin-right:10px; color: #f2f2f2; font-weight:500;font-size:18px;line-height:20px;cursor:pointer;">&check;</p> ${msgBox}`;
+          this.notifyBox.style = `position: fixed;background: #4caf50; color: ${this.alertColor};padding: 10px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);${this.placement}; border: 2px solid #ddd;word-wrap:break-word;cursor:pointer;`;
+          this.notifyBox.innerHTML = `<p style="width:fit-content; padding:0 0 6px 0; margin-right:10px; color: #f2f2f2;font-size:18px;line-height:20px;cursor:pointer;">&check; ${msgBox}</p>`;
           alertLoader = document.createElement("span");
           alertLoader.setAttribute("id","alertLoader");
           alertLoader.style = "position:absolute;width:100%;height:6px;background:linear-gradient(90deg,rgb(92, 66, 208),rgb(82, 75, 122)); border-radius:12px;left:0;bottom:0;transition:all 2s;";
@@ -77,8 +78,8 @@ var AlertNotify = (function () {
           break;
         case "danger":
           document.body.appendChild(this.notifyBox);
-          this.notifyBox.style = `position: fixed;background: #f44336; color: ${this.alertColor};padding: 8px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);${this.placement};font-weight: 700;border: 2px solid #ddd; word-wrap:break-word;cursor:pointer;`;
-          this.notifyBox.innerHTML = `<p style="width:fit-content; height:10px; padding:0 0 6px 0; margin-right:10px; color: #f2f2f2;font-weight:500;font-size:18px;line-height:20px;cursor:pointer;">&times;</p> ${msgBox}`;
+          this.notifyBox.style = `position: fixed;background: #f44336; color: ${this.alertColor};padding: 10px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);${this.placement};border: 2px solid #ddd; word-wrap:break-word;cursor:pointer;`;
+          this.notifyBox.innerHTML = `<p style="width:fit-content; padding:0 0 6px 0; margin-right:10px; color: #f2f2f2;font-size:18px;line-height:20px;cursor:pointer;">&times; ${msgBox}</p>`;
           alertLoader = document.createElement("span");
           alertLoader.setAttribute("id","alertLoader");
           alertLoader.style = "position:absolute;width:100%;height:6px;background:linear-gradient(90deg,rgb(92, 66, 208),rgb(82, 75, 122)); border-radius:12px;left:0;bottom:0;transition:all 2s;";
@@ -86,8 +87,8 @@ var AlertNotify = (function () {
           break;
         case "warning":
           document.body.appendChild(this.notifyBox);
-          this.notifyBox.style = `position: fixed;background: #ff9800; color: ${this.alertColor};padding: 8px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19); ${this.placement};font-weight: 700;border: 2px solid #ddd;word-wrap:break-word;cursor:pointer;`;
-          this.notifyBox.innerHTML = `<p style="width:fit-content; height:10px; padding:0 0 6px 0; margin-right:10px; color: #f2f2f2; font-weight:500;font-size:18px;line-height:20px;cursor:pointer;">&#x26A0;</p> ${msgBox}`;
+          this.notifyBox.style = `position: fixed;background: #ff9800; color: ${this.alertColor};padding: 10px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19); ${this.placement};border: 2px solid #ddd;word-wrap:break-word;cursor:pointer;`;
+          this.notifyBox.innerHTML = `<p style="width:fit-content; padding:0 0 6px 0; margin-right:10px; color: #f2f2f2;font-size:18px;line-height:20px;cursor:pointer;">&#x26A0; ${msgBox}</p>`;
           alertLoader = document.createElement("span");
           alertLoader.setAttribute("id","alertLoader");
           alertLoader.style = "position:absolute;width:100%;height:6px;background:linear-gradient(90deg,rgb(92, 66, 208),rgb(82, 75, 122)); border-radius:12px;left:0;bottom:0;transition:all 2s;";
@@ -95,8 +96,8 @@ var AlertNotify = (function () {
           break;
         default:
           document.body.appendChild(this.notifyBox);
-          this.notifyBox.style = `position: fixed;background: rgb(92, 66, 208); color: ${this.alertColor};padding: 8px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);${this.placement};font-weight: 700;border: 2px solid #ddd;word-wrap:break-word;cursor:pointer;`;
-          this.notifyBox.innerHTML = `<p style="width:fit-content; height:10px; padding:0 0 6px 0; margin-right:10px; color: #242526; font-weight:500;font-size:18px;line-height:20px;cursor:pointer;">&#63;</p> ${msgBox}`;
+          this.notifyBox.style = `position: fixed;background: rgb(92, 66, 208); color: ${this.alertColor};padding: 10px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);${this.placement};border: 2px solid #ddd;word-wrap:break-word;cursor:pointer;`;
+          this.notifyBox.innerHTML = `<p style="width:fit-content; padding:0 0 6px 0; margin-right:10px; color: #242526;font-size:18px;line-height:20px;cursor:pointer;">&#63; ${msgBox}</p>`;
           alertLoader = document.createElement("span");
           alertLoader.setAttribute("id","alertLoader");
           alertLoader.style = "position:absolute;width:100%;height:6px;background:linear-gradient(90deg,rgb(92, 66, 208),rgb(82, 75, 122)); border-radius:12px;left:0;bottom:0;transition:all 2s;";

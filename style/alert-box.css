@@ -1,3 +1,9 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #notification-box-of-boxes {
 max-width:450px; width: fit-content;
 animation: dim 1.5s ease-in-out forwards;
