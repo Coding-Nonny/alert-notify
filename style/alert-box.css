@@ -28,7 +28,7 @@ animation: dim 1.5s ease-in-out forwards;
   top: 0;
   background: rgba(2, 2, 36, 0.499);
   transition: all 500ms;
-  z-index: 10;
+  z-index: 100000000;
 }
 #nonny-modal-box .modal-div {
   position: relative;

@@ -268,7 +268,7 @@ var AlertNotify = (function () {
       if (hideThis) {
         hideThis.onclick = (e) => {
           if (e.target.classList.contains("close-nonny-modal")) {
-            hideThis.style.marginTop = "-5000px";
+            document.body.removeChild(hideThis);
           }
         };
       }
