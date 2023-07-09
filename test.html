@@ -36,16 +36,16 @@
       <button class="click">test</button>
     </div>
     <script>
-      const message = new AlertNotify(10000, "center");
+      const message = new AlertNotify(10000, "top-right");
       document.querySelector(".click").onclick =  async () => {
         if (
           await message.alert_Confirm(
             "Do You Think This Is Good?"
           )
         ) {
-          message.alert_message("This Is Default", "");
+          message.alert_message("This Is Default", "","fixed-modal");
         } else {
-          message.alert_message("This Is Danger", "danger");
+          message.alert_message("This Is Danger", "danger","fixed-modal");
         }
         message.shouldAutoHide();
       };

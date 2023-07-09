@@ -22,11 +22,17 @@ The arguments `time`, `position`, `textColor`, and `backgroundColor` are optiona
 - Call the `alert_message` method to display an alert message:
 
 ```javascript
-message.alert_message(messageText, messageType);
+message.alert_message(messageText, messageType,alertType);
 ```
 
 The `messageText` parameter represents the text to be displayed in the alert message, and `messageType` (optional) represents the type of alert (e.g., "warning", "success", "danger").
 
+The `alertType` determines the type of alert-box you want to use e.g `Postioned-modal` or `fixed-modal`. Using the `fixed-modal` requires that you include `alert-box.css` from the style folder for proper functionality. Default is `fixed-modal`.
+
+![Fixed Modal](./image/09.07.2023_18.02.46_REC.png) ![Fixed Modal](./image/09.07.2023_18.06.27_REC.png)
+
+`positioned-modal`
+![Fixed Modal](./image/09.07.2023_18.09.51_REC.png)
 - (Optional) Use the shouldAutoHide method to control whether the alert message should auto-hide:
 
 
@@ -35,6 +41,8 @@ message.shouldAutoHide(autoHide);
 ```
 
 The `autoHide` parameter is a boolean value (default is `true`). When set to `true`, the alert message will auto-hide. When set to `false`, the alert message will remain visible until the user clicks on it.
+- Note   
+The `autoHide()` only works when you are using `positioned-modal`.
 
 - (Optional) Use the alert_Confirm method to display a confirmation message:
 ```js

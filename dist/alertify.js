@@ -11,6 +11,8 @@ var AlertNotify = (function () {
       this.alertTimeout = _timeOut;
       this.alertColor = alertColor;
       this.notifyBox = document.createElement("div");
+      this.modalBox = document.createElement("div");
+      this.modalBox.setAttribute("id", "nonny-modal-box");
       this.notifyBox.setAttribute("id", "notification-box-of-boxes");
       this.timeoutId = null;
       this._confirmBoxColor = _confirmBoxColor;
@@ -61,57 +63,121 @@ var AlertNotify = (function () {
         e.preventDefault();
         this.hideOnClick();
       });
+      this.hideModal();
     }
 
-    alert_message(msg = "", type = "") {
-      const msgBox  = `${msg}`;
-      let alertLoader = "";
-      switch (type) {
-        case "success":
-          document.body.appendChild(this.notifyBox);
-          this.notifyBox.style = `position: fixed;background: #4caf50; color: ${this.alertColor};padding: 10px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);${this.placement}; border: 2px solid #ddd;word-wrap:break-word;cursor:pointer;`;
-          this.notifyBox.innerHTML = `<p style="width:fit-content; padding:0 0 6px 0; margin-right:10px; color: #f2f2f2;font-size:18px;line-height:20px;cursor:pointer;">&check; ${msgBox}</p>`;
-          alertLoader = document.createElement("span");
-          alertLoader.setAttribute("id","alertLoader");
-          alertLoader.style = "position:absolute;width:100%;height:6px;background:linear-gradient(90deg,rgb(92, 66, 208),rgb(82, 75, 122)); border-radius:12px;left:0;bottom:0;transition:all 2s;";
-          this.notifyBox.appendChild(alertLoader);
-          break;
-        case "danger":
-          document.body.appendChild(this.notifyBox);
-          this.notifyBox.style = `position: fixed;background: #f44336; color: ${this.alertColor};padding: 10px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);${this.placement};border: 2px solid #ddd; word-wrap:break-word;cursor:pointer;`;
-          this.notifyBox.innerHTML = `<p style="width:fit-content; padding:0 0 6px 0; margin-right:10px; color: #f2f2f2;font-size:18px;line-height:20px;cursor:pointer;">&times; ${msgBox}</p>`;
-          alertLoader = document.createElement("span");
-          alertLoader.setAttribute("id","alertLoader");
-          alertLoader.style = "position:absolute;width:100%;height:6px;background:linear-gradient(90deg,rgb(92, 66, 208),rgb(82, 75, 122)); border-radius:12px;left:0;bottom:0;transition:all 2s;";
-          this.notifyBox.appendChild(alertLoader);
-          break;
-        case "warning":
-          document.body.appendChild(this.notifyBox);
-          this.notifyBox.style = `position: fixed;background: #ff9800; color: ${this.alertColor};padding: 10px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19); ${this.placement};border: 2px solid #ddd;word-wrap:break-word;cursor:pointer;`;
-          this.notifyBox.innerHTML = `<p style="width:fit-content; padding:0 0 6px 0; margin-right:10px; color: #f2f2f2;font-size:18px;line-height:20px;cursor:pointer;">&#x26A0; ${msgBox}</p>`;
-          alertLoader = document.createElement("span");
-          alertLoader.setAttribute("id","alertLoader");
-          alertLoader.style = "position:absolute;width:100%;height:6px;background:linear-gradient(90deg,rgb(92, 66, 208),rgb(82, 75, 122)); border-radius:12px;left:0;bottom:0;transition:all 2s;";
-          this.notifyBox.appendChild(alertLoader);
-          break;
-        default:
-          document.body.appendChild(this.notifyBox);
-          this.notifyBox.style = `position: fixed;background: rgb(92, 66, 208); color: ${this.alertColor};padding: 10px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);${this.placement};border: 2px solid #ddd;word-wrap:break-word;cursor:pointer;`;
-          this.notifyBox.innerHTML = `<p style="width:fit-content; padding:0 0 6px 0; margin-right:10px; color: #242526;font-size:18px;line-height:20px;cursor:pointer;">&#63; ${msgBox}</p>`;
-          alertLoader = document.createElement("span");
-          alertLoader.setAttribute("id","alertLoader");
-          alertLoader.style = "position:absolute;width:100%;height:6px;background:linear-gradient(90deg,rgb(92, 66, 208),rgb(82, 75, 122)); border-radius:12px;left:0;bottom:0;transition:all 2s;";
-          this.notifyBox.appendChild(alertLoader);
-          break;
+    alert_message(msg = "", type = "", use = "fixed-modal") {
+      const msgBox = `${msg}`;
+      if (use == "fixed-modal") {
+        switch (type) {
+          case "success":
+            document.body.appendChild(this.modalBox);
+            this.modalBox.innerHTML = ` 
+         <div class="modal-div">
+         <i style="background:rgb(5, 215, 5)">&check;</i>
+         <h2>Thank You!</h2>
+         <p>
+           ${msg}
+         </p>
+         <button class="close-nonny-modal" style="background:rgb(5, 215, 5)">Ok</button>
+       </div>`;
+            this.showModal();
+            break;
+          case "warning":
+            document.body.appendChild(this.modalBox);
+            this.modalBox.innerHTML = ` 
+         <div class="modal-div">
+         <i style="background:rgb(194, 215, 5)">&#x26A0;</i>
+         <h2>Warning!</h2>
+         <p>
+           ${msg}
+         </p>
+         <button class="close-nonny-modal" style="background:rgb(194, 215, 5)">Ok</button>
+       </div>`;
+            this.showModal();
+            break;
+          case "danger":
+            document.body.appendChild(this.modalBox);
+            this.modalBox.innerHTML = ` 
+           <div class="modal-div">
+           <i style="background:crimson">&times</i>
+           <h2>Danger!</h2>
+           <p>
+             ${msg}
+           </p>
+           <button class="close-nonny-modal" style="background:crimson">Ok</button>
+         </div>`;
+            this.showModal();
+            break;
+          default:
+            document.body.appendChild(this.modalBox);
+            this.modalBox.innerHTML = ` 
+         <div class="modal-div">
+         <i style="background:rgb(5, 215, 5)"></i>
+         <h2>Thank You!</h2>
+         <p>
+           ${msg}
+         </p>
+         <button class="close-nonny-modal" style="background:rgb(5, 215, 5)">Ok</button>
+       </div>`;
+            this.showModal();
+            break;
+        }
+      } else if (use == "positioned-modal") {
+        let alertLoader = "";
+        switch (type) {
+          case "success":
+            document.body.appendChild(this.notifyBox);
+            this.notifyBox.style = `position: fixed;background: #4caf50; color: ${this.alertColor};padding: 10px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);${this.placement}; border: 2px solid #ddd;word-wrap:break-word;cursor:pointer;`;
+            this.notifyBox.innerHTML = `<p style="width:fit-content; padding:0 0 6px 0; margin-right:10px; color: #f2f2f2;font-size:18px;line-height:20px;cursor:pointer;">&check; ${msgBox}</p>`;
+            alertLoader = document.createElement("span");
+            alertLoader.setAttribute("id", "alertLoader");
+            alertLoader.style =
+              "position:absolute;width:100%;height:6px;background:linear-gradient(90deg,rgb(92, 66, 208),rgb(82, 75, 122)); border-radius:12px;left:0;bottom:0;transition:all 2s;";
+            this.notifyBox.appendChild(alertLoader);
+            break;
+          case "danger":
+            document.body.appendChild(this.notifyBox);
+            this.notifyBox.style = `position: fixed;background: #f44336; color: ${this.alertColor};padding: 10px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);${this.placement};border: 2px solid #ddd; word-wrap:break-word;cursor:pointer;`;
+            this.notifyBox.innerHTML = `<p style="width:fit-content; padding:0 0 6px 0; margin-right:10px; color: #f2f2f2;font-size:18px;line-height:20px;cursor:pointer;">&times; ${msgBox}</p>`;
+            alertLoader = document.createElement("span");
+            alertLoader.setAttribute("id", "alertLoader");
+            alertLoader.style =
+              "position:absolute;width:100%;height:6px;background:linear-gradient(90deg,rgb(92, 66, 208),rgb(82, 75, 122)); border-radius:12px;left:0;bottom:0;transition:all 2s;";
+            this.notifyBox.appendChild(alertLoader);
+            break;
+          case "warning":
+            document.body.appendChild(this.notifyBox);
+            this.notifyBox.style = `position: fixed;background: #ff9800; color: ${this.alertColor};padding: 10px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19); ${this.placement};border: 2px solid #ddd;word-wrap:break-word;cursor:pointer;`;
+            this.notifyBox.innerHTML = `<p style="width:fit-content; padding:0 0 6px 0; margin-right:10px; color: #f2f2f2;font-size:18px;line-height:20px;cursor:pointer;">&#x26A0; ${msgBox}</p>`;
+            alertLoader = document.createElement("span");
+            alertLoader.setAttribute("id", "alertLoader");
+            alertLoader.style =
+              "position:absolute;width:100%;height:6px;background:linear-gradient(90deg,rgb(92, 66, 208),rgb(82, 75, 122)); border-radius:12px;left:0;bottom:0;transition:all 2s;";
+            this.notifyBox.appendChild(alertLoader);
+            break;
+          default:
+            document.body.appendChild(this.notifyBox);
+            this.notifyBox.style = `position: fixed;background: rgb(92, 66, 208); color: ${this.alertColor};padding: 10px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);${this.placement};border: 2px solid #ddd;word-wrap:break-word;cursor:pointer;`;
+            this.notifyBox.innerHTML = `<p style="width:fit-content; padding:0 0 6px 0; margin-right:10px; color: #242526;font-size:18px;line-height:20px;cursor:pointer;">&#63; ${msgBox}</p>`;
+            alertLoader = document.createElement("span");
+            alertLoader.setAttribute("id", "alertLoader");
+            alertLoader.style =
+              "position:absolute;width:100%;height:6px;background:linear-gradient(90deg,rgb(92, 66, 208),rgb(82, 75, 122)); border-radius:12px;left:0;bottom:0;transition:all 2s;";
+            this.notifyBox.appendChild(alertLoader);
+            break;
+        }
+      } else {
+        throw new Error("unknown modal type");
       }
     }
 
     async hideOnClick() {
       if (document.body.contains(this.notifyBox)) {
-        document.querySelectorAll("#alertLoader").forEach(loadIngTimeOut => {
+        document.querySelectorAll("#alertLoader").forEach((loadIngTimeOut) => {
           loadIngTimeOut.style.width = "0";
         });
-        await new Promise(resolve => setTimeout(resolve,2000));
+        await new Promise((resolve) => setTimeout(resolve, 2000));
         this.notifyBox.style.display = "none";
       }
     }
@@ -122,10 +188,12 @@ var AlertNotify = (function () {
           if (document.body.contains(this.notifyBox)) {
             clearTimeout(this.timeoutId);
             this.timeoutId = setTimeout(async () => {
-              document.querySelectorAll("#alertLoader").forEach(loadIngTimeOut => {
-                loadIngTimeOut.style.width = "0";
-              });
-              await new Promise(resolve => setTimeout(resolve, 2000));
+              document
+                .querySelectorAll("#alertLoader")
+                .forEach((loadIngTimeOut) => {
+                  loadIngTimeOut.style.width = "0";
+                });
+              await new Promise((resolve) => setTimeout(resolve, 2000));
               document.body.removeChild(this.notifyBox);
             }, this.alertTimeout);
           } else {
@@ -185,6 +253,25 @@ var AlertNotify = (function () {
           resolve(callback);
         });
       });
+    }
+
+    async showModal() {
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      document.querySelector("#nonny-modal-box").style = "margin-top:0";
+      document.querySelector("#nonny-modal-box .modal-div").style =
+        "margin-top:0;transform:scale(1)";
+    }
+
+    async hideModal() {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const hideThis = this.modalBox;
+      if (hideThis) {
+        hideThis.onclick = (e) => {
+          if (e.target.classList.contains("close-nonny-modal")) {
+            hideThis.style.marginTop = "-5000px";
+          }
+        };
+      }
     }
   }
 
