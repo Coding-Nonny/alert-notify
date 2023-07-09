@@ -61,9 +61,11 @@ animation: dim 1.5s ease-in-out forwards;
   box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.1);
 }
 #nonny-modal-box .modal-div p {
+  width: 100%;
   font-weight: 500;
   font-size: 18px;
   margin-top: 35px;
+  word-wrap: break-word;
 }
 #nonny-modal-box .modal-div h2 {
   font-weight: 700;
