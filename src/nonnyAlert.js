@@ -72,7 +72,7 @@ class AlertNotify {
           this.modalBox.innerHTML = ` 
          <div class="modal-div">
          <i style="background:rgb(5, 215, 5)">&check;</i>
-         <h2>Thank You!</h2>
+         <h2>Success!</h2>
          <p>
            ${msg}
          </p>
