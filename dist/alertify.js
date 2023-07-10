@@ -96,11 +96,24 @@ var AlertNotify = (function () {
        </div>`;
             this.showModal();
             break;
+            case "info":
+            document.body.appendChild(this.modalBox);
+            this.modalBox.innerHTML = ` 
+           <div class="modal-div">
+           <i style="background:#0d00be">&#9432;</i>
+           <h2>Info!</h2>
+           <p>
+             ${msg}
+           </p>
+           <button class="close-nonny-modal" style="background:#0d00be">Ok</button>
+         </div>`;
+            this.showModal();
+            break;
           case "danger":
             document.body.appendChild(this.modalBox);
             this.modalBox.innerHTML = ` 
            <div class="modal-div">
-           <i style="background:crimson">&times</i>
+           <i style="background:crimson">&times;</i>
            <h2>Danger!</h2>
            <p>
              ${msg}
