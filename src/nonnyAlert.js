@@ -166,6 +166,16 @@ class AlertNotify {
             "position:absolute;width:100%;height:6px;background:linear-gradient(90deg,rgb(92, 66, 208),rgb(82, 75, 122)); border-radius:12px;left:0;bottom:0;transition:all 2s;";
           this.notifyBox.appendChild(alertLoader);
           break;
+          case "info":
+          document.body.appendChild(this.notifyBox);
+          this.notifyBox.style = `position: fixed;background: #0d00be; color: ${this.alertColor};padding: 10px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19); ${this.placement};border: 2px solid #ddd;word-wrap:break-word;cursor:pointer;`;
+          this.notifyBox.innerHTML = `<p style="width:fit-content; padding:0 0 6px 0; margin-right:10px; color: #f2f2f2;font-size:18px;line-height:20px;cursor:pointer;">&#9432; ${msgBox}</p>`;
+          alertLoader = document.createElement("span");
+          alertLoader.setAttribute("id", "alertLoader");
+          alertLoader.style =
+            "position:absolute;width:100%;height:6px;background:linear-gradient(90deg,rgb(92, 66, 208),rgb(82, 75, 122)); border-radius:12px;left:0;bottom:0;transition:all 2s;";
+          this.notifyBox.appendChild(alertLoader);
+          break;
         default:
           document.body.appendChild(this.notifyBox);
           this.notifyBox.style = `position: fixed;background: rgb(92, 66, 208); color: ${this.alertColor};padding: 10px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);${this.placement};border: 2px solid #ddd;word-wrap:break-word;cursor:pointer;`;
