@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <!-- <script src="https://coding-nonny.github.io/alert-notify/dist/alertify.js"></script> -->
-    <script src="./dist/development.js"></script>
+    <script src="./dist/alertify.js"></script>
     <style>
       * {
         margin: 0;
@@ -40,14 +40,14 @@
       document.querySelector(".click").onclick =  async () => {
         if (
           await message.alert_Confirm(
-            "Do You Think This Is Good?"
+            " Lorem ipsum dolor sit amet consectetur adipisicing elit.!?"
           )
         ) {
-          message.alert_message("This Is Default", "info","positioned-modal");
+          message.alert_message("Lorem ipsum dolor sit amet consectetur adipisicing elit.!?", "success","positioned-modal");
         } else {
-          message.alert_message("This Is Danger", "danger","fixed-modal");
+          message.alert_message("Lorem ipsum dolor sit amet consectetur adipisicing elit.!?", "success","fixed-modal");
         }
-        message.shouldAutoHide();
+        // message.shouldAutoHide();
       };
     </script>
   </body>

@@ -14,25 +14,28 @@ To use NonnyAlertJs, follow these steps:
 - Create an instance of `AlertNotify` by providing the appropriate arguments:
 
 ```javascript
-const message = new AlertNotify(time, position, textColor, backgroundColor);
+const message = new AlertNotify(time, position);
 ```
 
-The arguments `time`, `position`, `textColor`, and `backgroundColor` are optional. If not provided, default values will be used.
-
+The arguments `time`, `position` are optional. If not provided, default values will be used.   
+The `time` and `position` only works when you are using `positioned-modal`.
 - Call the `alert_message` method to display an alert message:
 
 ```javascript
 message.alert_message(messageText, messageType,alertType);
 ```
 
-The `messageText` parameter represents the text to be displayed in the alert message, and `messageType` (optional) represents the type of alert (e.g., "warning", "success", "danger").
+The `messageText` parameter represents the text to be displayed in the alert message, and `messageType` (optional) represents the type of alert (e.g., "warning", "success", "danger","info").
 
-The `alertType` determines the type of alert-box you want to use e.g `Postioned-modal` or `fixed-modal`. Using the `fixed-modal` requires that you include `alert-box.css` from the style folder for proper functionality. Default is `fixed-modal`.
+The `alertType` determines the type of alert-box you want to use e.g `Postioned-modal` or `fixed-modal`. Using the `fixed-modal` requires that you include `alert-box.css` from the style folder for proper functionality. Default alertType is `fixed-modal`.
 
-![Fixed Modal](./image/09.07.2023_18.02.46_REC.png) ![Fixed Modal](./image/09.07.2023_18.06.27_REC.png)
+![Fixed Modal](./image/Screenshot%202023-12-08%20043547.png)
 
 `positioned-modal`
-![Fixed Modal](./image/09.07.2023_18.09.51_REC.png)
+![Fixed Modal](./image/Screenshot%202023-12-08%20043617.png)
+
+`Confirmation box`
+![Fixed Modal](./image/Screenshot%202023-12-08%20043648.png)
 - (Optional) Use the shouldAutoHide method to control whether the alert message should auto-hide:
 
 
@@ -115,6 +118,6 @@ With these steps, you can now use NonnyAlertJs in your React components and take
 
 Note: 
 
-Remember to replace `time`, `position`, `textColor`, and `backgroundColor` with the desired values when creating the `AlertNotify` instance.
+Remember to replace `time` and `position` with the desired values when creating the `AlertNotify` instance.
 
 [click here for live example](https://coding-nonny.github.io/alert-notify/test.html)

@@ -1,19 +1,22 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 #notification-box-of-boxes {
-max-width:450px; width: fit-content;
-animation: dim 1.5s ease-in-out forwards;
+  max-width: 450px;
+  width: -moz-fit-content;
+  width: fit-content;
+  animation: dim 1.5s ease-in-out forwards;
 }
 
-@keyframes dim{
-  0%,100%{
+@keyframes dim {
+  0%,
+  100% {
     opacity: 1;
   }
-  50%{
+  50% {
     opacity: 0.5;
   }
 }
@@ -86,12 +89,14 @@ animation: dim 1.5s ease-in-out forwards;
   cursor: pointer;
   transition: transform 1s;
 }
- #nonny-modal-box .modal-div button:hover {
+#nonny-modal-box .modal-div button:hover {
   transform: scale(1.1);
 }
-@media screen and (max-width:500px){
+@media screen and (max-width: 500px) {
   #notification-box-of-boxes {
-    max-width:90%; width: fit-content;
+    max-width: 90%;
+    width: -moz-fit-content;
+    width: fit-content;
     animation: dim 1.5s ease-in-out forwards;
-    }
+  }
 }
