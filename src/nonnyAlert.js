@@ -2,8 +2,7 @@ class AlertNotify {
   constructor(
     _timeOut = 10000,
     position = "top-right",
-    alertColor = "#241f2b",
-    _confirmBoxColor = "#241f2b"
+    alertColor = "#241f2b"
   ) {
     this.alertTimeout = _timeOut;
     this.alertColor = alertColor;
@@ -12,7 +11,6 @@ class AlertNotify {
     this.modalBox.setAttribute("id", "nonny-modal-box");
     this.notifyBox.setAttribute("id", "notification-box-of-boxes");
     this.timeoutId = null;
-    this._confirmBoxColor = _confirmBoxColor;
     if (!this.notifyBox) throw new Error("No Container found");
 
     if (!Number.isInteger(this.alertTimeout))
@@ -93,7 +91,7 @@ class AlertNotify {
        </div>`;
           this.showModal();
           break;
-          case "info":
+        case "info":
           document.body.appendChild(this.modalBox);
           this.modalBox.innerHTML = ` 
            <div class="modal-div">
@@ -166,7 +164,7 @@ class AlertNotify {
             "position:absolute;width:100%;height:6px;background:linear-gradient(90deg,rgb(92, 66, 208),rgb(82, 75, 122)); border-radius:12px;left:0;bottom:0;transition:all 2s;";
           this.notifyBox.appendChild(alertLoader);
           break;
-          case "info":
+        case "info":
           document.body.appendChild(this.notifyBox);
           this.notifyBox.style = `position: fixed;background: #0d00be; color: ${this.alertColor};padding: 10px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19); ${this.placement};border: 2px solid #ddd;word-wrap:break-word;cursor:pointer;`;
           this.notifyBox.innerHTML = `<p style="width:fit-content; padding:0 0 6px 0; margin-right:10px; color: #f2f2f2;font-size:18px;line-height:20px;cursor:pointer;">&#9432; ${msgBox}</p>`;
@@ -217,7 +215,7 @@ class AlertNotify {
             document.body.removeChild(this.notifyBox);
           }, this.alertTimeout);
         } else {
-          console.log(false);
+          return 0;
         }
       }
     } catch (error) {
@@ -234,13 +232,14 @@ class AlertNotify {
     alertParentDiv.style =
       "position: fixed;width: 100%;height: 100%;background: rgba(0,0,0,0.212);display: flex; justify-content: center;align-items: center;top:0;left:0;right:0;z-index: 1000000;";
     const alertContainerDiv = document.createElement("div");
-    alertContainerDiv.style = `max-width: 450px; width: fit-content; background: ${this._confirmBoxColor};padding: 10px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);border-radius: 5px;border: 2px solid #ddd;word-wrap:break-word;`;
+    alertContainerDiv.style = `max-width: 450px;width: 100%;height:200px; background: hsl(0, 0%, 100%);padding: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);border-radius: 5px;border: 2px solid #ddd;word-wrap:break-word;`;
     const alertTextArea = document.createElement("p");
-    alertTextArea.style = "color: #eeeeee;font-weight:700;pointer-event: none";
-    alertTextArea.innerHTML = `${quest}`;
+    alertTextArea.style =
+      "color: rgb(13 17 23 / 1);font-weight:600;pointer-event: none;padding:10px;border-bottom:2px solid #01b075;font-size:20px;";
+    alertTextArea.textContent = `${quest}`;
     const alertBtn = document.createElement("div");
     alertBtn.style =
-      "width: 100%;display: flex;justify-content: flex-end;align-items: center;gap: 20px;";
+      "margin-top:10px;width: 100%;display: flex;justify-content: flex-end;align-items: center;gap: 20px;";
     const alertOkBtn = document.createElement("button");
     alertOkBtn.style =
       "border: 2px solid #242526;background: #fff; color: #242526;outline: none;padding:5px 10px;font-size: 16px;font-weight: 600;border-radius: 5px;";
