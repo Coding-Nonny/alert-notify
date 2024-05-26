@@ -1,5 +1,5 @@
 var AlertNotify = (function () {
-  "use strict";
+  'use strict';
 
   class AlertNotify {
     constructor(_timeOut = 10000, position = "center") {
@@ -292,4 +292,5 @@ var AlertNotify = (function () {
   }
 
   return AlertNotify;
+
 })();

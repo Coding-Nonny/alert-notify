@@ -61,7 +61,7 @@ class AlertNotify {
           document.body.appendChild(this.modalBox);
           this.modalBox.innerHTML = ` 
          <div class="modal-div">
-         <i style="background:#23c55e;color:#000">&check;</i>
+         <span style="background:#23c55e;color:#000">&check;</span>
          <h2>Success!</h2>
          <p>
            ${msg}
@@ -74,7 +74,7 @@ class AlertNotify {
           document.body.appendChild(this.modalBox);
           this.modalBox.innerHTML = ` 
          <div class="modal-div">
-         <i style="background:#feb601;color:#000">&#x26A0;</i>
+         <span style="background:#feb601;color:#000">&#x26A0;</span>
          <h2>Warning!</h2>
          <p>
            ${msg}
@@ -87,7 +87,7 @@ class AlertNotify {
           document.body.appendChild(this.modalBox);
           this.modalBox.innerHTML = ` 
            <div class="modal-div">
-           <i style="background:hsl(241, 93%, 29%);color:#fff;">&#9432;</i>
+           <span style="background:hsl(241, 93%, 29%);color:#fff;">&#9432;</span>
            <h2>Info!</h2>
            <p>
              ${msg}
@@ -113,7 +113,7 @@ class AlertNotify {
           document.body.appendChild(this.modalBox);
           this.modalBox.innerHTML = ` 
          <div class="modal-div">
-         <i style="background:#24282f;color#fff;">&#63;</i>
+         <span style="background:#24282f;color#fff;">&#63;</span>
          <h2>Default!</h2>
          <p>
            ${msg}
