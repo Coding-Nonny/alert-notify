@@ -103,7 +103,7 @@ var AlertNotify = (function () {
             document.body.appendChild(this.modalBox);
             this.modalBox.innerHTML = ` 
            <div class="modal-div">
-           <i style="background:#eb5f51;color:#000;">&times;</i>
+           <span style="background:#eb5f51;color:#000;">&times;</span>
            <h2>Danger!</h2>
            <p>
              ${msg}
