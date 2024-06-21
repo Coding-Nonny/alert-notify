@@ -40,7 +40,7 @@
   width: 0;
   display: none;
 }
-#nonny-modal-box .modal-div {
+#nonny-modal-box .nonny-modal-div {
   position: relative;
   max-width: 400px;
   width: 100%;
@@ -57,7 +57,7 @@
   transform: scale(0);
   transition: all 1s;
 }
-#nonny-modal-box .modal-div span {
+#nonny-modal-box .nonny-modal-div span {
   position: absolute;
   width: 80px;
   height: 80px;
@@ -71,19 +71,39 @@
   font-size: 45px;
   box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.1);
 }
-#nonny-modal-box .modal-div p {
+#nonny-modal-box .nonny-modal-div.nm-success span {
+  background: #23c55e;
+  color: #000;
+}
+#nonny-modal-box .nonny-modal-div.nm-warning span {
+  background: #feb601;
+  color: #000;
+}
+#nonny-modal-box .nonny-modal-div.nm-info span {
+  background: #4f5bd5;
+  color: #fff;
+}
+#nonny-modal-box .nonny-modal-div.nm-danger span {
+  background: #eb5f51;
+  color: #000;
+}
+#nonny-modal-box .nonny-modal-div.nm-default span {
+  background: #24282f;
+  color: #fff;
+}
+#nonny-modal-box .nonny-modal-div p {
   width: 100%;
   font-weight: 500;
   font-size: 18px;
   margin-top: 35px;
   word-wrap: break-word;
 }
-#nonny-modal-box .modal-div h2 {
+#nonny-modal-box .nonny-modal-div h2 {
   font-weight: 700;
   font-size: 30px;
   margin-top: 50px;
 }
-#nonny-modal-box .modal-div button {
+#nonny-modal-box .nonny-modal-div button {
   width: 80%;
   background: rgb(5, 215, 5);
   color: #edf1f4;
@@ -97,7 +117,27 @@
   cursor: pointer;
   transition: transform 1s;
 }
-#nonny-modal-box .modal-div button:hover {
+#nonny-modal-box .nonny-modal-div.nm-success button {
+  background: #23c55e;
+  color: #000;
+}
+#nonny-modal-box .nonny-modal-div.nm-warning button {
+  background: #feb601;
+  color: #000;
+}
+#nonny-modal-box .nonny-modal-div.nm-info button {
+  background: #4f5bd5;
+  color: #fff;
+}
+#nonny-modal-box .nonny-modal-div.nm-danger button {
+  background: #eb5f51;
+  color: #000;
+}
+#nonny-modal-box .nonny-modal-div.nm-default button {
+  background: #24282f;
+  color: #fff;
+}
+#nonny-modal-box .nonny-modal-div button:hover {
   transform: scale(1.1);
 }
 @media screen and (max-width: 500px) {

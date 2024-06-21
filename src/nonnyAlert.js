@@ -60,59 +60,59 @@ class AlertNotify {
         case "success":
           document.body.appendChild(this.modalBox);
           this.modalBox.innerHTML = ` 
-         <div class="modal-div">
-         <span style="background:#23c55e;color:#000">&check;</span>
+         <div class="nonny-modal-div nm-success">
+         <span>&check;</span>
          <h2>Success!</h2>
          <p>
            ${msg}
          </p>
-         <button class="close-nonny-modal" style="background:#23c55e;color:#000">Okay!</button>
+         <button class="close-nonny-modal">Okay!</button>
        </div>`;
           this.showModal();
           break;
         case "warning":
           document.body.appendChild(this.modalBox);
           this.modalBox.innerHTML = ` 
-         <div class="modal-div">
-         <span style="background:#feb601;color:#000">&#x26A0;</span>
+         <div class="nonny-modal-div nm-warning">
+         <span>&#x26A0;</span>
          <h2>Warning!</h2>
          <p>
            ${msg}
          </p>
-         <button class="close-nonny-modal" style="background:#feb601;color:#000">Okay!</button>
+         <button class="close-nonny-modal">Okay!</button>
        </div>`;
           this.showModal();
           break;
         case "info":
           document.body.appendChild(this.modalBox);
           this.modalBox.innerHTML = ` 
-           <div class="modal-div">
-           <span style="background:hsl(241, 93%, 29%);color:#fff;">&#9432;</span>
+           <div class="nonny-modal-div nm-info">
+           <span>&#9432;</span>
            <h2>Info!</h2>
            <p>
              ${msg}
            </p>
-           <button class="close-nonny-modal" style="background:hsl(241, 93%, 29%);color:#fff;">Okay!</button>
+           <button class="close-nonny-modal">Okay!</button>
          </div>`;
           this.showModal();
           break;
         case "danger":
           document.body.appendChild(this.modalBox);
           this.modalBox.innerHTML = ` 
-           <div class="modal-div">
-           <span style="background:#eb5f51;color:#000;">&times;</span>
+           <div class="nonny-modal-div nm-danger">
+           <span>&times;</span>
            <h2>Danger!</h2>
            <p>
              ${msg}
            </p>
-           <button class="close-nonny-modal" style="background:#eb5f51;color:#000;">Okay!</button>
+           <button class="close-nonny-modal">Okay!</button>
          </div>`;
           this.showModal();
           break;
         default:
           document.body.appendChild(this.modalBox);
           this.modalBox.innerHTML = ` 
-         <div class="modal-div">
+         <div class="nonny-modal-div nm-default">
          <span style="background:#24282f;color#fff;">&#63;</span>
          <h2>Default!</h2>
          <p>
@@ -271,7 +271,7 @@ class AlertNotify {
   async showModal() {
     await new Promise((resolve) => setTimeout(resolve, 500));
     document.querySelector("#nonny-modal-box").style = "margin-top:0";
-    document.querySelector("#nonny-modal-box .modal-div").style =
+    document.querySelector("#nonny-modal-box .nonny-modal-div").style =
       "margin-top:0;transform:scale(1)";
   }
 
