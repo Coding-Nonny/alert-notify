@@ -29,7 +29,7 @@
         overflow: hidden;
       }
     </style>
-    <link rel="stylesheet" href="./style/alert-box.css">
+    <link rel="stylesheet" href="./style/alert-box.css" />
   </head>
   <body>
     <div class="nonny">
@@ -37,17 +37,28 @@
     </div>
     <script>
       const message = new AlertNotify(10000, "top-right");
-      document.querySelector(".click").onclick =  async () => {
+      document.querySelector(".click").onclick = async () => {
         if (
           await message.alert_Confirm(
-            " Lorem ipsum dolor sit amet consectetur adipisicing elit.!?"
+            " Lorem ipsum dolor sit amet consectetur adipisicing elit.!?",
+            "Nice",
+            "Bad"
           )
         ) {
-          message.alert_message("Lorem ipsum dolor sit amet consectetur adipisicing elit.!?", "success","positioned-modal");
+          message.alert_message(
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.!?",
+            "danger",
+            "positioned-modal"
+          );
         } else {
-          message.alert_message("Lorem ipsum dolor sit amet consectetur adipisicing elit.!?", "success","fixed-modal");
+          message.alert_message(
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.!?",
+            "danger",
+            "fixed-modal",
+            "Close"
+          );
         }
-        // message.shouldAutoHide();
+        message.shouldAutoHide();
       };
     </script>
   </body>
