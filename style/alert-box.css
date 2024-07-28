@@ -300,7 +300,7 @@
 #nonny-confirm-box #alertContainerDiv .nonny-alertBtn .conf_ok {
   border: none;
   background: #23c55e;
-  color: #242526;
+  color: #ffffff;
   outline: none;
   padding: 6px 2rem;
   font-size: 1rem;
@@ -311,7 +311,7 @@
 #nonny-confirm-box #alertContainerDiv .nonny-alertBtn .conf_decl {
   border: none;
   background: #eb5f51;
-  color: #fff;
+  color: #ffffff;
   outline: none;
   padding: 6px 2rem;
   font-size: 1rem;
