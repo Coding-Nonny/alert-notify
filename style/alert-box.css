@@ -291,8 +291,9 @@
   margin-top: 10px;
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-around;
   align-items: center;
+  flex-wrap:wrap;
   gap: 1rem;
   padding: 10px;
 }
