@@ -1,12 +1,10 @@
 class AlertNotify {
   constructor(_timeOut = 10000, position = "center") {
     this.alertTimeout = _timeOut;
-    this.notifyBox = document.createElement("div");
+    this.notifyBox = "";
     this.modalBox = document.createElement("div");
     this.modalBox.setAttribute("id", "nonny-modal-box");
-    this.notifyBox.setAttribute("id", "notification-box-of-boxes");
     this.timeoutId = null;
-    if (!this.notifyBox) throw new Error("No Container found");
 
     if (!Number.isInteger(this.alertTimeout))
       throw new Error("timing must be number");
@@ -36,9 +34,11 @@ class AlertNotify {
     if (this.position == "bottom-left") this.placement = "bottom-left";
     if (this.position == "bottom-right") this.placement = "bottom-right";
     if (this.position == "bottom-center") this.placement = "bottom-center";
-    this.notifyBox.addEventListener("click", (e) => {
-      e.preventDefault();
-      this.hideOnClick();
+    document.querySelectorAll(".nonny-psal").forEach((psa) => {
+      psa.addEventListener("click", (e) => {
+        e.preventDefault();
+        this.hideOnClick();
+      });
     });
     this.hideModal();
   }
@@ -114,11 +114,29 @@ class AlertNotify {
           break;
       }
     } else if (use == "positioned-modal") {
-      let alertLoader = "";
+      this.notifyBox = document.createElement("div");
+      if (!this.notifyBox) throw new Error("No Container found");
+      this.notifyBox.setAttribute("id", "notification-box-of-boxes");
+      this.notifyBox.classList.add("nonny-psal");
+      let alertLoader = "",
+        lastPosition = 0,
+        lastMargin = 20;
+      const allNtB = document.querySelectorAll(".nonny-psal");
+      if (allNtB.length > 0) {
+        allNtB.forEach((ntb) => {
+          lastPosition += ntb.clientHeight;
+          lastMargin += 10;
+        });
+      }
       switch (type) {
         case "success":
           document.body.appendChild(this.notifyBox);
           this.notifyBox.classList.add("nm-success", this.placement);
+          if (lastPosition == "-66px" || lastPosition == "0") {
+            this.notifyBox.style.top = `2%`;
+          } else {
+            this.notifyBox.style = `top:${lastPosition + lastMargin}px;`;
+          }
           this.notifyBox.innerHTML = `<b>&check;</b><p>${msgBox}</p>`;
           alertLoader = document.createElement("span");
           alertLoader.setAttribute("class", "nonny-alertLoader");
@@ -259,7 +277,9 @@ class AlertNotify {
     if (hideThis) {
       hideThis.onclick = (e) => {
         if (e.target.classList.contains("close-nonny-modal")) {
-          document.querySelector("#nonny-modal-box").classList.remove("modal-visible");
+          document
+            .querySelector("#nonny-modal-box")
+            .classList.remove("modal-visible");
           document
             .querySelector("#nonny-modal-box .nonny-modal-div")
             .classList.remove("scaled");
